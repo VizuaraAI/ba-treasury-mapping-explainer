@@ -182,6 +182,19 @@
   .spec .c{color:var(--muted-2);}
   .spec .g{color:#3f7a4f;}
 
+  /* ---- friendly table ---- */
+  .rbtable{width:100%;border-collapse:separate;border-spacing:0;font-family:"Newsreader",serif;font-size:17.5px;}
+  .rbtable th{background:var(--lav);text-align:left;padding:14px 16px;font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--lav-ink);border-bottom:1.5px solid var(--ink);font-weight:600;}
+  .rbtable td{padding:14px 16px;border-bottom:1px solid #e7e3c8;color:#2c2c28;vertical-align:top;}
+  .rbtable tr:last-child td{border-bottom:none;}
+  .rbtable th:first-child{border-top-left-radius:14px;}
+  .rbtable th:last-child{border-top-right-radius:14px;}
+  .rbtable .blank{color:#b5562f;font-style:italic;}
+  .rbtable .do{color:#33322c;}
+  .rbtable tr.hot td{background:#FBF3E6;}
+  .rbtable tr.hot .do{color:#b5562f;font-weight:500;}
+  @media(max-width:680px){.rbtable{font-size:15px;} .rbtable th,.rbtable td{padding:10px 10px;}}
+
   /* ---- prep list ---- */
   .prep{display:grid;gap:14px;margin-top:26px;}
   .prep-row{
@@ -391,7 +404,7 @@
 
     <div class="narrow reveal" style="padding-top:24px;">
       <p>Now here's where <strong>API mapping</strong> comes in — and you'll see it's the <em>same idea as Part 2</em>, just applied to that little request and answer.</p>
-      <p>The two systems must agree, in writing, on exactly what each piece of the message means: <em>"The field we call <span class="mono">acctId</span> is the same thing you call <span class="mono">account_number</span>. Our <span class="mono">amount</span> is your <span class="mono">balance</span>, always with two decimal places, always in euros."</em></p>
+      <p>The two systems must agree, in writing, on exactly what each piece of the message means: <em>"What I call the 'account number' is the same thing you call the 'account reference'. What I call the 'amount' is what you call the 'balance' — and it will always be in euros, always with the pennies shown."</em> If you've ever worked with SWIFT, you already know this feeling: SWIFT is itself an agreed messaging channel with agreed fields. An API is the same idea, generalised to any two systems.</p>
       <p class="callout">An <strong>API</strong> is the doorway two systems talk through. <strong>API mapping</strong> is the agreement about what every word said through that doorway means. <em>Same mapping idea as Maria's contact card — now between live systems.</em></p>
       <div class="recap"><b>Why it's needed:</b> Without an API, systems would have to reach into each other's databases — fragile, unsafe, impossible to control. Without API <b>mapping</b>, they'd talk past each other — one says "amount", the other hears "balance", and money goes wrong. The Business Analyst writes that agreement down so it can't be misunderstood.</div>
     </div>
@@ -411,9 +424,9 @@
       <p>When a bank sends money, it fills in a structured <strong>form</strong> and sends it down the wire. There are two such forms in the world right now:</p>
       <ul class="clean">
         <li><strong>The old form</strong>, called <span class="mono">SWIFT MT103</span>. Think of it as a paper form with numbered lines: line <span class="mono">:50:</span> is the sender, line <span class="mono">:59:</span> is the receiver, line <span class="mono">:32A:</span> is the amount. Banks have used it for decades.</li>
-        <li><strong>The new form</strong>, called <span class="mono">ISO 20022 (pacs.008)</span>. Same information, but laid out in a cleaner, more detailed structure with named tags like <span class="mono">&lt;Dbtr&gt;</span> (debtor = sender) and <span class="mono">&lt;Cdtr&gt;</span> (creditor = receiver).</li>
+        <li><strong>The new form</strong>, called <span class="mono">ISO 20022</span>. Same information, but laid out more clearly, with each piece given a proper name — the <em>Debtor</em> (the sender), the <em>Creditor</em> (the receiver), the <em>Amount</em>, and so on. Plain words instead of numbered lines.</li>
       </ul>
-      <p style="margin-top:24px;">The whole banking world is slowly switching from the old form to the new one. So someone has to write the rulebook: <strong>"line :50: of the old form becomes the &lt;Dbtr&gt; tag of the new form; the amount drops its commas; the date flips its format…"</strong></p>
+      <p style="margin-top:24px;">The whole banking world is slowly switching from the old form to the new one. So someone has to write the rulebook: <strong>"the sender line of the old form becomes the Debtor on the new form; the amount drops its commas; the date flips its format…"</strong> — one plain instruction for every single field.</p>
       <p>That is <strong>message mapping</strong>. It is Maria's contact card again — just with money fields. Here it is, line by line:</p>
     </div>
 
@@ -460,22 +473,22 @@
           </g>
           <rect x="680" y="20" width="340" height="430" rx="16" fill="#EAF6EC" stroke="#1A1A18" stroke-width="1.6"/>
           <text x="704" y="56" font-size="15" font-weight="600" fill="#2f6b40">NEW FORM · ISO 20022</text>
-          <text x="704" y="78" font-size="11.5" fill="#86846f">named tags</text>
+          <text x="704" y="78" font-size="11.5" fill="#86846f">plain named fields</text>
           <g font-size="12.5" fill="#1A1A18">
             <rect x="700" y="98" width="300" height="52" rx="9" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1.2"/>
-            <text x="714" y="120" font-weight="600" fill="#2f6b40">&lt;Dbtr&gt; (sender)</text>
+            <text x="714" y="120" font-weight="600" fill="#2f6b40">Sender (Debtor)</text>
             <text x="714" y="139">ACME TRADING LTD</text>
             <rect x="700" y="160" width="300" height="52" rx="9" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1.2"/>
-            <text x="714" y="182" font-weight="600" fill="#2f6b40">&lt;Cdtr&gt; (receiver)</text>
+            <text x="714" y="182" font-weight="600" fill="#2f6b40">Receiver (Creditor)</text>
             <text x="714" y="201">GLOBEX SA</text>
             <rect x="700" y="222" width="300" height="52" rx="9" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1.2"/>
-            <text x="714" y="244" font-weight="600" fill="#2f6b40">&lt;Amt Ccy="EUR"&gt;</text>
-            <text x="714" y="263">1250000.00</text>
+            <text x="714" y="244" font-weight="600" fill="#2f6b40">Amount &amp; currency</text>
+            <text x="714" y="263">EUR 1250000.00</text>
             <rect x="700" y="284" width="300" height="52" rx="9" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1.2"/>
-            <text x="714" y="306" font-weight="600" fill="#2f6b40">&lt;RmtInf&gt; (note)</text>
-            <text x="714" y="325" font-size="11.5">ref: 8842</text>
+            <text x="714" y="306" font-weight="600" fill="#2f6b40">Payment reference</text>
+            <text x="714" y="325" font-size="11.5">invoice 8842</text>
             <rect x="700" y="346" width="300" height="52" rx="9" fill="#FBF3E6" stroke="#C98A3a" stroke-width="1.4"/>
-            <text x="714" y="368" font-weight="600" fill="#C98A3a">&lt;CdtrAgt&gt; (rcvr bank)</text>
+            <text x="714" y="368" font-weight="600" fill="#C98A3a">Receiver's bank (BIC)</text>
             <text x="714" y="387">GLOBESAXXX ← filled in</text>
           </g>
         </svg>
@@ -500,17 +513,21 @@
     </div>
 
     <figure class="reveal">
-      <div class="spec">
-<span class="c"># The mapping specification — the BA's actual deliverable</span>
-
-<span class="k">OLD FORM</span>          <span class="k">NEW FORM</span>             <span class="k">RULE (plain English)</span>
-:50: sender       &lt;Dbtr&gt;               copy the name across
-:32A: amount      &lt;Amt&gt;                remove the commas (1,250,000 → 1250000.00)
-:32A: currency    Ccy="..."            check it's a real currency code (EUR, USD…)
-:57A: rcvr bank   &lt;CdtrAgt&gt;            <span class="g">if blank: look up account → find bank code → fill in</span>
-:70: note         &lt;RmtInf&gt;             pull out the invoice number if there is one
+      <div class="figframe">
+        <table class="rbtable">
+          <thead>
+            <tr><th>What the old form has</th><th>What the new form needs</th><th>The rule, in plain words</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Sender: <b>ACME TRADING LTD</b></td><td>Sender's name</td><td class="do">Copy it across (keep it under 140 letters)</td></tr>
+            <tr><td>Amount: <b>1,250,000</b></td><td>Amount</td><td class="do">Write it without the commas → 1250000.00</td></tr>
+            <tr><td>Currency: <b>EUR</b></td><td>Currency</td><td class="do">Check it's a real currency code (EUR, USD, GBP…)</td></tr>
+            <tr class="hot"><td>Receiver's bank: <span class="blank">— blank —</span></td><td>Receiver's bank <b>(required)</b></td><td class="do">It's missing! Look it up from the account number and fill it in</td></tr>
+            <tr><td>Note: <b>INV 8842</b></td><td>Payment reference</td><td class="do">Pull out the invoice number: 8842</td></tr>
+          </tbody>
+        </table>
       </div>
-      <figcaption>FIG 4 — The deliverable. Every developer and tester works from this one page, so nobody guesses. <b>This table is what "writing mapping specifications" means.</b></figcaption>
+      <figcaption>FIG 4 — The "rulebook" the Business Analyst hands over. Just a table anyone can read — like a spreadsheet. <b>This is what "writing a mapping specification" means.</b> The orange row is the only tricky one.</figcaption>
     </figure>
 
     <div class="narrow reveal" style="padding-top:20px;">
