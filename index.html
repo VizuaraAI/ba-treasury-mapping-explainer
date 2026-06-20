@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>The Translator's Job — Mapping, JIRA & Confluence for a Treasury BA</title>
-<meta name="description" content="A plain-English, example-led explainer of API / data / message mapping specifications, JIRA and Confluence — and how they fit a VP Business Analyst role in Treasury & Intraday Liquidity." />
+<title>Explained Simply — Mapping, APIs, JIRA & Confluence for a Treasury BA</title>
+<meta name="description" content="A slow, from-scratch, plain-English lesson on API / data / message mapping, JIRA and Confluence — with everyday examples before any banking word." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..600&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -32,22 +32,23 @@
     color:var(--ink);
     font-family:"Newsreader",Georgia,serif;
     font-size:21px;
-    line-height:1.6;
+    line-height:1.65;
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
   }
   .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
-  .narrow{max-width:780px;margin:0 auto;padding:0 28px;}
+  .narrow{max-width:740px;margin:0 auto;padding:0 28px;}
 
   /* ---- type ---- */
-  h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:500;letter-spacing:-0.015em;line-height:1.02;margin:0;}
-  .display{font-size:clamp(56px,11vw,148px);line-height:0.92;letter-spacing:-0.03em;font-weight:480;}
+  h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif;font-weight:500;letter-spacing:-0.015em;line-height:1.05;margin:0;}
+  .display{font-size:clamp(50px,9.5vw,128px);line-height:0.94;letter-spacing:-0.03em;font-weight:480;}
   .display .dim{color:var(--muted);}
-  h2{font-size:clamp(34px,5.4vw,62px);letter-spacing:-0.025em;font-weight:460;}
-  h3{font-size:clamp(24px,3vw,33px);font-weight:500;letter-spacing:-0.02em;}
-  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:13px;letter-spacing:0.22em;text-transform:uppercase;color:var(--lav-ink);font-weight:600;}
+  h2{font-size:clamp(32px,5vw,56px);letter-spacing:-0.025em;font-weight:460;}
+  h3{font-size:clamp(23px,3vw,31px);font-weight:500;letter-spacing:-0.02em;}
+  h4{font-size:22px;font-weight:600;}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:var(--lav-ink);font-weight:600;}
   p{margin:0 0 22px;}
-  .lead{font-size:clamp(22px,2.6vw,29px);line-height:1.45;color:#2c2c28;}
+  .lead{font-size:clamp(21px,2.5vw,27px);line-height:1.5;color:#2c2c28;}
   a{color:inherit;}
   em{font-style:italic;color:var(--muted-2);}
   strong{font-weight:600;}
@@ -59,17 +60,17 @@
     background:var(--paper);
     border:1.5px solid var(--ink);
     border-radius:22px;
-    padding:14px 18px 14px 24px;
+    padding:13px 16px 13px 22px;
     box-shadow:0 2px 0 var(--ink);
   }
-  .brand{display:flex;align-items:center;gap:11px;font-family:"Fraunces",serif;font-weight:600;font-size:25px;letter-spacing:-0.02em;}
+  .brand{display:flex;align-items:center;gap:11px;font-family:"Fraunces",serif;font-weight:600;font-size:24px;letter-spacing:-0.02em;}
   .bars{display:flex;align-items:flex-end;gap:3px;height:24px;}
   .bars span{width:4px;background:var(--ink);border-radius:2px;}
   .bars span:nth-child(1){height:11px;}
   .bars span:nth-child(2){height:22px;}
   .bars span:nth-child(3){height:15px;}
   .bars span:nth-child(4){height:19px;}
-  .navlinks{display:flex;gap:26px;align-items:center;font-size:17px;font-family:"Newsreader",serif;}
+  .navlinks{display:flex;gap:22px;align-items:center;font-size:16px;font-family:"Newsreader",serif;}
   .navlinks a{text-decoration:none;color:#36352f;transition:color .2s;}
   .navlinks a:hover{color:var(--lav-ink);}
   .pill{
@@ -86,83 +87,95 @@
   }
   .pill:hover{transform:translateY(-2px);box-shadow:0 4px 0 var(--ink);}
   .pill:active{transform:translateY(1px);box-shadow:0 1px 0 var(--ink);}
-  @media(max-width:760px){.navlinks{display:none;}}
+  @media(max-width:820px){.navlinks{display:none;}}
 
   /* ---- hero ---- */
-  header.hero{position:relative;padding:90px 0 40px;text-align:center;}
-  .hero .display{margin:0 auto;max-width:14ch;}
-  .hero .lead{max-width:30ch;margin:30px auto 34px;}
-  .avail{font-family:"JetBrains Mono",monospace;font-size:13px;letter-spacing:0.08em;color:var(--muted-2);margin-top:18px;}
+  header.hero{position:relative;padding:80px 0 36px;text-align:center;}
+  .hero .display{margin:0 auto;max-width:15ch;}
+  .hero .lead{max-width:34ch;margin:28px auto 30px;}
+  .avail{font-family:"JetBrains Mono",monospace;font-size:13px;letter-spacing:0.06em;color:var(--muted-2);margin-top:16px;}
   .curve{position:absolute;color:var(--muted);font-family:"Newsreader",serif;font-size:15px;letter-spacing:0.02em;pointer-events:none;user-select:none;}
-  .curve.left{left:-40px;top:230px;}
-  .curve.right{right:-30px;top:150px;}
-  @media(max-width:980px){.curve{display:none;}}
+  .curve.left{left:-20px;top:240px;}
+  .curve.right{right:-10px;top:160px;}
+  @media(max-width:1040px){.curve{display:none;}}
 
   /* ---- ribbon ---- */
   .ribbon{
     background:var(--ink);color:var(--cream);
     transform:rotate(-2.4deg) scale(1.06);
-    margin:60px 0;padding:20px 0;
+    margin:54px 0;padding:18px 0;
     font-family:"Fraunces",serif;font-weight:500;
     white-space:nowrap;overflow:hidden;
   }
-  .ribbon .track{display:inline-block;animation:slide 34s linear infinite;}
-  .ribbon span{font-size:28px;letter-spacing:-0.01em;margin:0 26px;opacity:.95;}
+  .ribbon .track{display:inline-block;animation:slide 36s linear infinite;}
+  .ribbon span{font-size:26px;letter-spacing:-0.01em;margin:0 24px;opacity:.95;}
   .ribbon .dot{color:var(--lav-deep);}
   @keyframes slide{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
   /* ---- sections ---- */
-  section{padding:74px 0;}
-  .section-head{max-width:760px;margin-bottom:14px;}
-  .section-head .eyebrow{display:block;margin-bottom:18px;}
+  section{padding:64px 0;}
+  .section-head{max-width:760px;margin-bottom:8px;}
+  .section-head .eyebrow{display:block;margin-bottom:16px;}
   .kicker{color:var(--muted-2);}
+  .parttag{font-family:"JetBrains Mono",monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:var(--lav-ink);font-weight:600;display:inline-block;background:var(--lav);border:1.3px solid var(--ink);border-radius:30px;padding:5px 16px;margin-bottom:22px;}
 
   /* ---- cards ---- */
   .card{
     background:var(--paper);
     border:1.5px solid var(--ink);
     border-radius:24px;
-    padding:34px 36px;
+    padding:30px 32px;
     box-shadow:0 3px 0 var(--ink);
   }
   .card.lav{background:#F3EAFB;}
   .card.mint{background:#EAF6EC;}
   .card.peach{background:#FBEEE4;}
-  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
-  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
   @media(max-width:860px){.grid-2,.grid-3{grid-template-columns:1fr;}}
   .card h3{margin-bottom:12px;}
   .card p{font-size:19px;margin-bottom:0;}
-  .tagnum{font-family:"Fraunces",serif;font-size:46px;font-weight:300;color:var(--lav-deep);line-height:1;display:block;margin-bottom:12px;}
+  .tagnum{font-family:"Fraunces",serif;font-size:44px;font-weight:300;color:var(--lav-deep);line-height:1;display:block;margin-bottom:10px;}
+
+  /* ---- analogy box ---- */
+  .analogy{
+    background:#F3EAFB;border:1.5px solid var(--ink);border-radius:22px;
+    padding:26px 30px;margin:32px 0;box-shadow:0 3px 0 var(--ink);
+    position:relative;
+  }
+  .analogy .tagline{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--lav-ink);font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:9px;}
+  .analogy p{font-size:20px;margin:0;color:#33322c;}
+  .analogy p + p{margin-top:14px;}
+  .analogy .emoji{font-size:20px;}
 
   /* ---- figure frame ---- */
-  figure{margin:40px 0 10px;}
+  figure{margin:38px 0 10px;}
   .figframe{
     background:var(--paper);
     border:1.5px solid var(--ink);
     border-radius:26px;
-    padding:30px;
+    padding:28px;
     box-shadow:0 3px 0 var(--ink);
     overflow:hidden;
   }
-  figcaption{font-family:"JetBrains Mono",monospace;font-size:12.5px;letter-spacing:0.04em;color:var(--muted-2);text-align:center;margin-top:18px;}
+  figcaption{font-family:"JetBrains Mono",monospace;font-size:12.5px;letter-spacing:0.03em;color:var(--muted-2);text-align:center;margin-top:16px;line-height:1.5;}
   figcaption b{color:var(--lav-ink);font-weight:600;}
   svg{display:block;width:100%;height:auto;}
-  .mono{font-family:"JetBrains Mono",monospace;}
+  .mono{font-family:"JetBrains Mono",monospace;font-size:0.92em;}
 
   /* ---- callout ---- */
   .callout{
     border-left:4px solid var(--lav-deep);
-    padding:6px 0 6px 24px;
-    margin:30px 0;
+    padding:4px 0 4px 24px;
+    margin:28px 0;
     font-size:22px;line-height:1.45;color:#34332d;
   }
   .callout em{color:var(--lav-ink);font-style:italic;}
 
-  /* ---- code/spec block ---- */
+  /* ---- spec block ---- */
   .spec{
     background:#FFFDF3;border:1.5px solid var(--ink);border-radius:18px;
-    font-family:"JetBrains Mono",monospace;font-size:14px;line-height:1.7;
+    font-family:"JetBrains Mono",monospace;font-size:13.5px;line-height:1.7;
     padding:22px 24px;overflow-x:auto;box-shadow:0 3px 0 var(--ink);
   }
   .spec .k{color:var(--lav-ink);font-weight:600;}
@@ -177,493 +190,605 @@
     padding:20px 24px;box-shadow:0 2px 0 var(--ink);
   }
   .prep-row .n{font-family:"Fraunces",serif;font-size:30px;color:var(--lav-deep);line-height:1;min-width:34px;}
-  .prep-row h3{font-size:22px;margin-bottom:6px;}
+  .prep-row h3{font-size:21px;margin-bottom:6px;}
   .prep-row p{font-size:18px;margin:0;color:#3a392f;}
 
   /* ---- footer ---- */
-  footer{background:var(--ink);color:var(--cream);padding:70px 0 50px;margin-top:60px;}
-  footer .display-sm{font-family:"Fraunces",serif;font-size:clamp(34px,6vw,68px);font-weight:460;letter-spacing:-0.03em;line-height:0.96;}
+  footer{background:var(--ink);color:var(--cream);padding:64px 0 48px;margin-top:54px;}
+  footer .display-sm{font-family:"Fraunces",serif;font-size:clamp(32px,5.6vw,60px);font-weight:460;letter-spacing:-0.03em;line-height:0.98;}
   footer .display-sm .dim{color:#7d7b66;}
   footer p{color:#cfceba;font-size:18px;}
   footer a.pill{background:var(--lav);color:var(--ink);}
-  .foot-meta{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:0.05em;color:#86846f;margin-top:40px;}
+  .foot-meta{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:0.05em;color:#86846f;margin-top:36px;}
 
-  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
   .reveal.in{opacity:1;transform:none;}
 
   .tag{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:0.04em;background:var(--lav);border:1.2px solid var(--ink);border-radius:20px;padding:4px 12px;margin:0 4px 8px 0;}
   ul.clean{list-style:none;padding:0;margin:18px 0 0;}
-  ul.clean li{padding:10px 0 10px 30px;position:relative;font-size:19px;border-top:1px solid #e7e3c8;}
+  ul.clean li{padding:11px 0 11px 30px;position:relative;font-size:19px;border-top:1px solid #e7e3c8;}
   ul.clean li:first-child{border-top:none;}
   ul.clean li::before{content:"→";position:absolute;left:0;color:var(--lav-deep);font-weight:700;}
+
+  hr.soft{border:none;border-top:1.5px solid #e3dfbf;margin:0;}
+  .recap{background:var(--cream-2);border:1.5px dashed var(--lav-deep);border-radius:18px;padding:20px 26px;margin:30px 0;font-size:19px;}
+  .recap b{color:var(--lav-ink);}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <div class="navbar wrap" style="padding-left:24px;padding-right:18px;">
+  <div class="navbar wrap" style="padding-left:22px;padding-right:16px;">
     <div class="brand">
       <span class="bars"><span></span><span></span><span></span><span></span></span>
-      Mapping
+      Explained&nbsp;Simply
     </div>
     <div class="navlinks">
+      <a href="#problem">The problem</a>
       <a href="#mapping">Mapping</a>
-      <a href="#why">Why Treasury</a>
+      <a href="#api">APIs</a>
+      <a href="#bank">Banking</a>
       <a href="#jira">JIRA</a>
       <a href="#confluence">Confluence</a>
       <a href="#prep">Prepare</a>
     </div>
-    <a href="#mapping" class="pill">Start reading →</a>
+    <a href="#problem" class="pill">Start the lesson →</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <header class="hero">
-  <div class="curve left">↳ the message leaves one system…</div>
-  <div class="curve right">…and must arrive understood in the next ↴</div>
+  <div class="curve left">↳ we start with no jargon at all…</div>
+  <div class="curve right">…and build up, one small step at a time ↴</div>
   <div class="wrap">
-    <div class="eyebrow" style="margin-bottom:28px;">VP · Business Analyst · Treasury &amp; Intraday Liquidity</div>
-    <h1 class="display"><span class="dim">Don't just</span> move data, <span class="dim">make it</span> understood.</h1>
-    <p class="lead">A plain-English guide to <strong>API / data / message mapping</strong>, <strong>JIRA</strong> and <strong>Confluence</strong> — and why a bank pays a Business Analyst to master them.</p>
-    <a href="#mapping" class="pill" style="font-size:19px;padding:14px 28px;">Read the explainer →</a>
-    <div class="avail">Built in the spirit of the role · worked examples · no jargon left unexplained</div>
+    <div class="eyebrow" style="margin-bottom:26px;">VP · Business Analyst · Treasury &amp; Intraday Liquidity</div>
+    <h1 class="display"><span class="dim">Let's make the</span> hard words <span class="dim">feel</span> easy.</h1>
+    <p class="lead">A slow, from-scratch lesson on <strong>mapping</strong>, <strong>APIs</strong>, <strong>JIRA</strong> and <strong>Confluence</strong> — explained with everyday examples first, banking words second. No prior knowledge needed.</p>
+    <a href="#problem" class="pill" style="font-size:19px;padding:14px 28px;">Begin at the beginning →</a>
+    <div class="avail">7 short parts · read top to bottom · every term explained the first time it appears</div>
   </div>
 </header>
 
 <!-- RIBBON -->
 <div class="ribbon">
   <div class="track">
-    <span>SWIFT MT103 <span class="dot">●</span> ISO 20022 pacs.008 <span class="dot">●</span> enrichment logic <span class="dot">●</span> data lineage <span class="dot">●</span> intraday liquidity <span class="dot">●</span> reconciliation <span class="dot">●</span> traceability matrix <span class="dot">●</span> </span>
-    <span>SWIFT MT103 <span class="dot">●</span> ISO 20022 pacs.008 <span class="dot">●</span> enrichment logic <span class="dot">●</span> data lineage <span class="dot">●</span> intraday liquidity <span class="dot">●</span> reconciliation <span class="dot">●</span> traceability matrix <span class="dot">●</span> </span>
+    <span>start simple <span class="dot">●</span> two apps, one fact <span class="dot">●</span> what is an API? <span class="dot">●</span> a payment is just a form <span class="dot">●</span> what is JIRA? <span class="dot">●</span> what is Confluence? <span class="dot">●</span> you've got this <span class="dot">●</span> </span>
+    <span>start simple <span class="dot">●</span> two apps, one fact <span class="dot">●</span> what is an API? <span class="dot">●</span> a payment is just a form <span class="dot">●</span> what is JIRA? <span class="dot">●</span> what is Confluence? <span class="dot">●</span> you've got this <span class="dot">●</span> </span>
   </div>
 </div>
 
-<!-- THE ROLE IN ONE LINE -->
-<section style="padding-top:20px;">
+<!-- PART 1: THE PROBLEM -->
+<section id="problem" style="padding-top:18px;">
   <div class="narrow reveal">
-    <div class="eyebrow" style="margin-bottom:20px;">The job, in one line</div>
-    <p class="lead">Inside a bank, money and instructions move constantly between systems that <em>do not speak the same language.</em> A payment engine, a liquidity calculator, the ledger, SWIFT, reconciliation, reporting — each holds the same facts in a different shape.</p>
-    <p class="callout">The Business Analyst is the <em>translator</em> who writes the rulebook that says exactly how a fact in one system becomes the same fact in the next — and proves nothing was lost along the way.</p>
-    <p>Everything below — mapping specs, JIRA, Confluence — is just the toolkit for doing that translation reliably, at scale, with an audit trail a regulator will accept.</p>
+    <span class="parttag">Part 1 of 7 · The big idea</span>
+    <h2>First, the one problem behind everything</h2>
+    <p class="lead" style="margin-top:22px;">Forget banking for a minute. Let's talk about something you already understand: <strong>two apps that store the same thing in different ways.</strong></p>
+    <p>Imagine you keep your contacts in two different phone apps.</p>
+    <p><strong>App A</strong> saves a person like this: a box called <span class="mono">First name</span> with "Maria" in it, and a separate box called <span class="mono">Last name</span> with "Garcia" in it. Two boxes.</p>
+    <p><strong>App B</strong> is different. It has only <em>one</em> box, called <span class="mono">Full name</span>, and it expects the whole thing — "Maria Garcia" — written together.</p>
+    <p>Now you want to copy Maria from App A into App B. Simple for a human. But a computer is literal. It needs to be <em>told</em>, in exact words: <strong>"To fill App B's one box, take App A's first-name box, add a space, then add App A's last-name box."</strong></p>
+    <p class="callout">That instruction — <em>this box here becomes that box there, in this exact way</em> — is the whole job. In the industry it is called a <strong>mapping</strong>. Everything else on this page is just bigger, more careful versions of this one idea.</p>
   </div>
 </section>
 
-<!-- MAPPING -->
-<section id="mapping">
+<!-- PART 2: MAPPING -->
+<section id="mapping" style="background:var(--cream-2);">
   <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Concept 01</span>
-      <h2>What "API / data / message mapping specifications" actually means</h2>
-      <p class="lead kicker" style="margin-top:20px;">It's one skill wearing three hats. In every case you are writing a precise table that says: <em>this field, here, becomes that field, there — under these rules.</em></p>
+    <div class="section-head narrow reveal" style="margin:0 auto;">
+      <span class="parttag">Part 2 of 7 · Mapping</span>
+      <h2>What "mapping" means — drawn out</h2>
+      <p class="lead" style="margin-top:20px;">Let's see Maria move from App A to App B. Watch the single rule in the middle. That rule <em>is</em> the mapping.</p>
     </div>
 
-    <div class="grid-3 reveal" style="margin-top:36px;">
-      <div class="card lav">
-        <span class="tagnum">01</span>
-        <h3>Message mapping</h3>
-        <p>Payments travel as structured <strong>messages</strong>. Old world: <span class="mono">SWIFT MT</span> (MT103, MT202). New world: <span class="mono">ISO&nbsp;20022</span> (pacs.008, camt.053). You map field-by-field, tag-by-tag.</p>
+    <!-- FIG A: contact card mapping -->
+    <figure class="reveal">
+      <div class="figframe">
+        <svg viewBox="0 0 1040 330" xmlns="http://www.w3.org/2000/svg" font-family="JetBrains Mono, monospace">
+          <defs>
+            <marker id="arrowL" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto"><path d="M1,1 L10,5 L1,9" fill="none" stroke="#5B3E86" stroke-width="2"/></marker>
+          </defs>
+          <!-- App A -->
+          <rect x="30" y="50" width="320" height="230" rx="18" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1.6"/>
+          <text x="54" y="86" font-size="15" font-weight="600" fill="#5B3E86">APP A · two boxes</text>
+          <rect x="54" y="104" width="272" height="64" rx="10" fill="#F3EAFB" stroke="#1A1A18" stroke-width="1.2"/>
+          <text x="70" y="128" font-size="12" fill="#86846f">First name</text>
+          <text x="70" y="152" font-size="18" fill="#1A1A18">Maria</text>
+          <rect x="54" y="182" width="272" height="64" rx="10" fill="#F3EAFB" stroke="#1A1A18" stroke-width="1.2"/>
+          <text x="70" y="206" font-size="12" fill="#86846f">Last name</text>
+          <text x="70" y="230" font-size="18" fill="#1A1A18">Garcia</text>
+
+          <!-- rule in the middle -->
+          <line x1="350" y1="165" x2="690" y2="165" stroke="#5B3E86" stroke-width="2" marker-end="url(#arrowL)"/>
+          <rect x="410" y="118" width="220" height="58" rx="12" fill="#E4D4F4" stroke="#1A1A18" stroke-width="1.5"/>
+          <text x="520" y="142" font-size="12" fill="#5B3E86" text-anchor="middle" font-weight="600">THE RULE (mapping)</text>
+          <text x="520" y="162" font-size="12.5" fill="#1A1A18" text-anchor="middle">first + " " + last</text>
+
+          <!-- App B -->
+          <rect x="690" y="50" width="320" height="230" rx="18" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1.6"/>
+          <text x="714" y="86" font-size="15" font-weight="600" fill="#2f6b40">APP B · one box</text>
+          <rect x="714" y="134" width="272" height="64" rx="10" fill="#EAF6EC" stroke="#1A1A18" stroke-width="1.2"/>
+          <text x="730" y="158" font-size="12" fill="#86846f">Full name</text>
+          <text x="730" y="182" font-size="18" fill="#1A1A18">Maria Garcia</text>
+        </svg>
       </div>
-      <div class="card mint">
-        <span class="tagnum">02</span>
-        <h3>Data mapping</h3>
-        <p>The same idea for data <strong>at rest</strong> — in databases and feeds. Source column → target column, with type, length, format and a transform rule. This is where <strong>data lineage</strong> lives.</p>
-      </div>
-      <div class="card peach">
-        <span class="tagnum">03</span>
-        <h3>API mapping</h3>
-        <p>When systems talk <strong>in real time</strong>, you specify the request/response contract: every attribute, mandatory or optional, its validation, and how it ties to the internal model.</p>
-      </div>
+      <figcaption>FIG 1 — A mapping is just a written rule: take the boxes on the left, follow the rule in the middle, fill the box on the right. <b>Nothing more mysterious than that.</b></figcaption>
+    </figure>
+
+    <div class="narrow reveal" style="padding-top:24px;">
+      <p>Now scale this up. A real business doesn't have 2 boxes — it has systems with <strong>hundreds</strong> of boxes, and the rules aren't always "just join with a space." Sometimes a box must be reformatted (a date written <span class="mono">20/06/2026</span> on one side must become <span class="mono">2026-06-20</span> on the other). Sometimes a box on the left has no matching box on the right, or vice versa.</p>
+      <p>Someone has to sit down and write the <em>complete list</em> of these rules so that no box is forgotten and nothing is mistranslated. That document is called a <strong>mapping specification</strong> ("spec" for short).</p>
+      <div class="recap"><b>Recap:</b> A <b>mapping</b> = a rule that turns a field on one side into a field on the other. A <b>mapping specification</b> = the full list of those rules. Writing that list is a big part of the Business Analyst's job.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PART 3: API -->
+<section id="api">
+  <div class="wrap">
+    <div class="section-head narrow reveal" style="margin:0 auto;">
+      <span class="parttag">Part 3 of 7 · APIs</span>
+      <h2>So… what is an "API", and why is it needed?</h2>
+      <p class="lead" style="margin-top:20px;">We've been copying Maria by hand. But in a real company, the two systems must talk to each other <em>automatically</em>, many times a second. How? Through something called an <strong>API</strong>.</p>
     </div>
 
-    <!-- FIGURE: MT103 -> pacs.008 -->
+    <div class="narrow reveal">
+      <p>Here is the simplest way to understand it.</p>
+    </div>
+
+    <div class="analogy narrow reveal" style="margin-left:auto;margin-right:auto;">
+      <div class="tagline"><span class="emoji">🍽️</span> Everyday picture · the restaurant</div>
+      <p>You sit at a table in a restaurant. You're hungry. The <strong>kitchen</strong> has all the food, but you are <em>not allowed</em> to walk into the kitchen and rummage around. That would be chaos — and dangerous.</p>
+      <p>Instead, there's a <strong>menu</strong> (a list of exactly what you're allowed to ask for) and a <strong>waiter</strong> (who takes your order to the kitchen and brings back the dish). You ask in the agreed way; you get back a known result.</p>
+      <p>An <strong>API is the menu + the waiter.</strong> It is the official, agreed doorway through which one computer system asks another for something — without being allowed to barge into its private database.</p>
+    </div>
+
+    <div class="narrow reveal">
+      <p>"API" stands for <em>Application Programming Interface</em>, but the words don't matter. What matters is the idea: <strong>a system never reaches directly into another system's data.</strong> It politely asks, through a defined doorway, and gets a defined answer back.</p>
+      <p>Let's make it concrete with money. Suppose System A wants to know the balance of account 123. It doesn't open System B's database. It sends a small request <em>through the API</em>, and gets a small answer back:</p>
+    </div>
+
+    <!-- FIG B: API doorway -->
+    <figure class="reveal">
+      <div class="figframe">
+        <svg viewBox="0 0 1040 320" xmlns="http://www.w3.org/2000/svg" font-family="JetBrains Mono, monospace">
+          <defs>
+            <marker id="aReq" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto"><path d="M1,1 L10,5 L1,9" fill="none" stroke="#5B3E86" stroke-width="2"/></marker>
+            <marker id="aRes" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto"><path d="M1,1 L10,5 L1,9" fill="none" stroke="#2f6b40" stroke-width="2"/></marker>
+          </defs>
+          <!-- System A -->
+          <rect x="30" y="90" width="220" height="140" rx="16" fill="#F3EAFB" stroke="#1A1A18" stroke-width="1.6"/>
+          <text x="140" y="150" font-size="16" font-weight="600" fill="#5B3E86" text-anchor="middle">SYSTEM A</text>
+          <text x="140" y="176" font-size="12" fill="#86846f" text-anchor="middle">"the customer"</text>
+
+          <!-- API doorway -->
+          <rect x="455" y="60" width="130" height="200" rx="14" fill="#E4D4F4" stroke="#1A1A18" stroke-width="1.8"/>
+          <text x="520" y="110" font-size="15" font-weight="600" fill="#5B3E86" text-anchor="middle">API</text>
+          <text x="520" y="132" font-size="10.5" fill="#5B3E86" text-anchor="middle">the doorway</text>
+          <text x="520" y="220" font-size="26" text-anchor="middle">🚪</text>
+
+          <!-- System B -->
+          <rect x="790" y="90" width="220" height="140" rx="16" fill="#EAF6EC" stroke="#1A1A18" stroke-width="1.6"/>
+          <text x="900" y="144" font-size="16" font-weight="600" fill="#2f6b40" text-anchor="middle">SYSTEM B</text>
+          <text x="900" y="168" font-size="12" fill="#86846f" text-anchor="middle">"the kitchen"</text>
+          <text x="900" y="192" font-size="11" fill="#86846f" text-anchor="middle">(private database)</text>
+
+          <!-- request -->
+          <path d="M250,135 L452,135" stroke="#5B3E86" stroke-width="2" marker-end="url(#aReq)"/>
+          <rect x="270" y="96" width="166" height="30" rx="8" fill="#FFFDF3" stroke="#5B3E86" stroke-width="1.2"/>
+          <text x="280" y="115" font-size="10.5" fill="#5B3E86">ask: balance of #123?</text>
+          <path d="M588,135 L788,135" stroke="#5B3E86" stroke-width="2" marker-end="url(#aReq)"/>
+
+          <!-- response -->
+          <path d="M788,190 L590,190" stroke="#2f6b40" stroke-width="2" marker-end="url(#aRes)"/>
+          <path d="M452,190 L252,190" stroke="#2f6b40" stroke-width="2" marker-end="url(#aRes)"/>
+          <rect x="600" y="200" width="178" height="30" rx="8" fill="#FFFDF3" stroke="#2f6b40" stroke-width="1.2"/>
+          <text x="610" y="219" font-size="10.5" fill="#2f6b40">answer: €40,000.00</text>
+        </svg>
+      </div>
+      <figcaption>FIG 2 — The API is the doorway. System A <b>asks</b> (purple) in the agreed way; System B <b>answers</b> (green). Neither one touches the other's private data.</figcaption>
+    </figure>
+
+    <div class="narrow reveal" style="padding-top:24px;">
+      <p>Now here's where <strong>API mapping</strong> comes in — and you'll see it's the <em>same idea as Part 2</em>, just applied to that little request and answer.</p>
+      <p>The two systems must agree, in writing, on exactly what each piece of the message means: <em>"The field we call <span class="mono">acctId</span> is the same thing you call <span class="mono">account_number</span>. Our <span class="mono">amount</span> is your <span class="mono">balance</span>, always with two decimal places, always in euros."</em></p>
+      <p class="callout">An <strong>API</strong> is the doorway two systems talk through. <strong>API mapping</strong> is the agreement about what every word said through that doorway means. <em>Same mapping idea as Maria's contact card — now between live systems.</em></p>
+      <div class="recap"><b>Why it's needed:</b> Without an API, systems would have to reach into each other's databases — fragile, unsafe, impossible to control. Without API <b>mapping</b>, they'd talk past each other — one says "amount", the other hears "balance", and money goes wrong. The Business Analyst writes that agreement down so it can't be misunderstood.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PART 4: BANKING -->
+<section id="bank" style="background:var(--cream-2);">
+  <div class="wrap">
+    <div class="section-head narrow reveal" style="margin:0 auto;">
+      <span class="parttag">Part 4 of 7 · The real banking example</span>
+      <h2>A payment is just a form being re-copied</h2>
+      <p class="lead" style="margin-top:20px;">You now have everything you need. A bank payment is exactly like Maria's contact card — only the "boxes" hold money details, and there are a lot of them.</p>
+    </div>
+
+    <div class="narrow reveal">
+      <p>When a bank sends money, it fills in a structured <strong>form</strong> and sends it down the wire. There are two such forms in the world right now:</p>
+      <ul class="clean">
+        <li><strong>The old form</strong>, called <span class="mono">SWIFT MT103</span>. Think of it as a paper form with numbered lines: line <span class="mono">:50:</span> is the sender, line <span class="mono">:59:</span> is the receiver, line <span class="mono">:32A:</span> is the amount. Banks have used it for decades.</li>
+        <li><strong>The new form</strong>, called <span class="mono">ISO 20022 (pacs.008)</span>. Same information, but laid out in a cleaner, more detailed structure with named tags like <span class="mono">&lt;Dbtr&gt;</span> (debtor = sender) and <span class="mono">&lt;Cdtr&gt;</span> (creditor = receiver).</li>
+      </ul>
+      <p style="margin-top:24px;">The whole banking world is slowly switching from the old form to the new one. So someone has to write the rulebook: <strong>"line :50: of the old form becomes the &lt;Dbtr&gt; tag of the new form; the amount drops its commas; the date flips its format…"</strong></p>
+      <p>That is <strong>message mapping</strong>. It is Maria's contact card again — just with money fields. Here it is, line by line:</p>
+    </div>
+
+    <!-- FIG C: MT103 -> pacs.008 -->
     <figure class="reveal">
       <div class="figframe">
         <svg viewBox="0 0 1040 470" xmlns="http://www.w3.org/2000/svg" font-family="JetBrains Mono, monospace">
           <defs>
-            <marker id="arrow" markerWidth="11" markerHeight="11" refX="8" refY="5" orient="auto">
-              <path d="M1,1 L9,5 L1,9" fill="none" stroke="#5B3E86" stroke-width="1.8"/>
-            </marker>
-            <marker id="arrowdot" markerWidth="11" markerHeight="11" refX="8" refY="5" orient="auto">
-              <path d="M1,1 L9,5 L1,9" fill="none" stroke="#C98A3a" stroke-width="1.8"/>
-            </marker>
+            <marker id="arrow" markerWidth="11" markerHeight="11" refX="8" refY="5" orient="auto"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#5B3E86" stroke-width="1.8"/></marker>
+            <marker id="arrowdot" markerWidth="11" markerHeight="11" refX="8" refY="5" orient="auto"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#C98A3a" stroke-width="1.8"/></marker>
           </defs>
-
-          <!-- LEFT panel: MT103 -->
           <rect x="20" y="20" width="340" height="430" rx="16" fill="#F3EAFB" stroke="#1A1A18" stroke-width="1.6"/>
-          <text x="44" y="56" font-size="15" font-weight="600" fill="#5B3E86">LEGACY · SWIFT MT103</text>
-          <text x="44" y="78" font-size="11.5" fill="#86846f">customer credit transfer</text>
-
+          <text x="44" y="56" font-size="15" font-weight="600" fill="#5B3E86">OLD FORM · SWIFT MT103</text>
+          <text x="44" y="78" font-size="11.5" fill="#86846f">numbered lines</text>
           <g font-size="13" fill="#1A1A18">
             <rect x="40" y="98" width="300" height="52" rx="9" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1.2"/>
-            <text x="54" y="120" font-weight="600">:50K:</text><text x="120" y="120" fill="#86846f" font-size="11">Ordering Customer</text>
+            <text x="54" y="120" font-weight="600">:50K:</text><text x="120" y="120" fill="#86846f" font-size="11">sender</text>
             <text x="54" y="139">ACME TRADING LTD</text>
-
             <rect x="40" y="160" width="300" height="52" rx="9" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1.2"/>
-            <text x="54" y="182" font-weight="600">:59:</text><text x="110" y="182" fill="#86846f" font-size="11">Beneficiary</text>
+            <text x="54" y="182" font-weight="600">:59:</text><text x="110" y="182" fill="#86846f" font-size="11">receiver</text>
             <text x="54" y="201">GLOBEX SA</text>
-
             <rect x="40" y="222" width="300" height="52" rx="9" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1.2"/>
-            <text x="54" y="244" font-weight="600">:32A:</text><text x="118" y="244" fill="#86846f" font-size="11">Value / Ccy / Amount</text>
+            <text x="54" y="244" font-weight="600">:32A:</text><text x="118" y="244" fill="#86846f" font-size="11">date / ccy / amount</text>
             <text x="54" y="263">240620 EUR 1,250,000</text>
-
             <rect x="40" y="284" width="300" height="52" rx="9" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1.2"/>
-            <text x="54" y="306" font-weight="600">:70:</text><text x="110" y="306" fill="#86846f" font-size="11">Remittance Info</text>
+            <text x="54" y="306" font-weight="600">:70:</text><text x="110" y="306" fill="#86846f" font-size="11">note / reference</text>
             <text x="54" y="325" font-size="12">INV 8842</text>
-
             <rect x="40" y="346" width="300" height="52" rx="9" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1.2"/>
-            <text x="54" y="368" font-weight="600">:57A:</text><text x="118" y="368" fill="#86846f" font-size="11">Account With Inst.</text>
-            <text x="54" y="387">— blank —</text>
+            <text x="54" y="368" font-weight="600">:57A:</text><text x="118" y="368" fill="#86846f" font-size="11">receiver's bank</text>
+            <text x="54" y="387">— left blank —</text>
           </g>
-
-          <!-- MIDDLE: rules -->
           <g>
-            <text x="520" y="40" font-size="13" font-weight="600" fill="#5B3E86" text-anchor="middle">MAPPING + ENRICHMENT</text>
+            <text x="520" y="40" font-size="13" font-weight="600" fill="#5B3E86" text-anchor="middle">THE MAPPING RULES</text>
             <line x1="360" y1="124" x2="680" y2="124" stroke="#5B3E86" stroke-width="1.6" marker-end="url(#arrow)"/>
+            <text x="520" y="116" font-size="9.5" fill="#86846f" text-anchor="middle">copy</text>
             <line x1="360" y1="186" x2="680" y2="186" stroke="#5B3E86" stroke-width="1.6" marker-end="url(#arrow)"/>
+            <text x="520" y="178" font-size="9.5" fill="#86846f" text-anchor="middle">copy</text>
             <line x1="360" y1="248" x2="680" y2="248" stroke="#5B3E86" stroke-width="1.6" marker-end="url(#arrow)"/>
+            <text x="520" y="240" font-size="9.5" fill="#86846f" text-anchor="middle">reformat number</text>
             <line x1="360" y1="310" x2="680" y2="310" stroke="#5B3E86" stroke-width="1.6" marker-end="url(#arrow)"/>
+            <text x="520" y="302" font-size="9.5" fill="#86846f" text-anchor="middle">tidy up</text>
             <path d="M360,372 C480,372 470,420 540,420" fill="none" stroke="#C98A3a" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrowdot)"/>
-            <text x="500" y="412" font-size="10.5" fill="#C98A3a" text-anchor="middle">enrich: derive BIC</text>
+            <text x="500" y="412" font-size="10" fill="#C98A3a" text-anchor="middle">blank! must fill it in</text>
           </g>
-
-          <!-- RIGHT panel: pacs.008 -->
           <rect x="680" y="20" width="340" height="430" rx="16" fill="#EAF6EC" stroke="#1A1A18" stroke-width="1.6"/>
-          <text x="704" y="56" font-size="15" font-weight="600" fill="#2f6b40">STRATEGIC · ISO 20022 pacs.008</text>
-          <text x="704" y="78" font-size="11.5" fill="#86846f">FIToFICstmrCdtTrf — structured XML</text>
-
+          <text x="704" y="56" font-size="15" font-weight="600" fill="#2f6b40">NEW FORM · ISO 20022</text>
+          <text x="704" y="78" font-size="11.5" fill="#86846f">named tags</text>
           <g font-size="12.5" fill="#1A1A18">
             <rect x="700" y="98" width="300" height="52" rx="9" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1.2"/>
-            <text x="714" y="120" font-weight="600" fill="#2f6b40">&lt;Dbtr&gt;&lt;Nm&gt;</text>
+            <text x="714" y="120" font-weight="600" fill="#2f6b40">&lt;Dbtr&gt; (sender)</text>
             <text x="714" y="139">ACME TRADING LTD</text>
-
             <rect x="700" y="160" width="300" height="52" rx="9" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1.2"/>
-            <text x="714" y="182" font-weight="600" fill="#2f6b40">&lt;Cdtr&gt;&lt;Nm&gt;</text>
+            <text x="714" y="182" font-weight="600" fill="#2f6b40">&lt;Cdtr&gt; (receiver)</text>
             <text x="714" y="201">GLOBEX SA</text>
-
             <rect x="700" y="222" width="300" height="52" rx="9" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1.2"/>
-            <text x="714" y="244" font-weight="600" fill="#2f6b40">&lt;IntrBkSttlmAmt Ccy="EUR"&gt;</text>
+            <text x="714" y="244" font-weight="600" fill="#2f6b40">&lt;Amt Ccy="EUR"&gt;</text>
             <text x="714" y="263">1250000.00</text>
-
             <rect x="700" y="284" width="300" height="52" rx="9" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1.2"/>
-            <text x="714" y="306" font-weight="600" fill="#2f6b40">&lt;RmtInf&gt;&lt;Strd&gt;</text>
-            <text x="714" y="325" font-size="11.5">&lt;RefNb&gt;8842&lt;/RefNb&gt;</text>
-
+            <text x="714" y="306" font-weight="600" fill="#2f6b40">&lt;RmtInf&gt; (note)</text>
+            <text x="714" y="325" font-size="11.5">ref: 8842</text>
             <rect x="700" y="346" width="300" height="52" rx="9" fill="#FBF3E6" stroke="#C98A3a" stroke-width="1.4"/>
-            <text x="714" y="368" font-weight="600" fill="#C98A3a">&lt;CdtrAgt&gt;&lt;BIC&gt;</text>
-            <text x="714" y="387">GLOBESAXXX  ← derived</text>
+            <text x="714" y="368" font-weight="600" fill="#C98A3a">&lt;CdtrAgt&gt; (rcvr bank)</text>
+            <text x="714" y="387">GLOBESAXXX ← filled in</text>
           </g>
         </svg>
       </div>
-      <figcaption>FIG 1 — One payment, two languages. The BA writes the rule for <b>every</b> arrow: copy, reformat, or <b>enrich</b> a missing field (the orange path) from reference data.</figcaption>
+      <figcaption>FIG 3 — Same payment, two forms. Most rules are "copy" or "reformat". The interesting one is the orange line at the bottom.</figcaption>
     </figure>
 
-    <div class="narrow reveal" style="padding-top:30px;">
-      <p>Notice the bottom row. The old MT103 left the beneficiary's bank (<span class="mono">:57A:</span>) blank — common in real life. The new ISO message <em>requires</em> it. So the spec can't just say "copy." It must say: <strong>"if blank, look up the beneficiary's IBAN in the reference table, derive the BIC, and populate &lt;CdtrAgt&gt;."</strong> That sentence is <strong>enrichment logic</strong> — and the ad asks for it by name.</p>
+    <div class="narrow reveal" style="padding-top:24px;">
+      <h3 style="margin-bottom:14px;">The one new word: "enrichment"</h3>
+      <p>Look at the bottom row. The old form left <span class="mono">:57A:</span> (the receiver's bank) <strong>blank</strong> — that happens all the time. But the new form <em>requires</em> it. So the rule can't just say "copy" — there's nothing to copy.</p>
     </div>
 
-    <!-- SPEC TABLE -->
+    <div class="analogy narrow reveal" style="margin-left:auto;margin-right:auto;">
+      <div class="tagline"><span class="emoji">📮</span> Everyday picture · the missing postcode</div>
+      <p>You're posting a parcel and the address has no postcode. You don't give up — you <strong>look up</strong> the postcode from the street and city you <em>do</em> have, and write it in. Now the parcel can be delivered.</p>
+      <p>Filling in a missing piece by looking it up from what you already know is called <strong>enrichment</strong>. That's the whole word.</p>
+    </div>
+
+    <div class="narrow reveal">
+      <p>So the rule for that last line reads: <strong>"If the receiver's bank is blank, look up the receiver's account number in our reference table, find their bank code (called a BIC), and fill it in."</strong> The job ad calls this "enrichment logic" — now you know it just means <em>"fill in the missing box by looking it up."</em></p>
+      <p>And the finished rulebook — the thing the Business Analyst actually hands over — looks like this. Notice it's just a plain table. No magic:</p>
+    </div>
+
     <figure class="reveal">
       <div class="spec">
-<span class="c"># Excerpt from a real mapping specification — this is the BA's deliverable</span>
+<span class="c"># The mapping specification — the BA's actual deliverable</span>
 
-<span class="k">SOURCE</span>            <span class="k">TARGET</span>                    <span class="k">RULE</span>                          <span class="k">MANDATORY</span>  <span class="k">ON-FAIL</span>
-:50K:            &lt;Dbtr&gt;&lt;Nm&gt;                copy, trim to 140 chars       Y          reject + MI alert
-:32A: amount     &lt;IntrBkSttlmAmt&gt;          strip commas → decimal(18,2)   Y          reject
-:32A: ccy        @Ccy attribute            ISO-4217 validate             Y          reject
-:57A: (BIC)      &lt;CdtrAgt&gt;&lt;BIC&gt;            <span class="g">IF blank: lookup(IBAN)→BIC</span>      Y          route to repair queue
-:70:             &lt;RmtInf&gt;&lt;Strd&gt;&lt;RefNb&gt;     extract "INV ####" → digits   N          fallback to &lt;Ustrd&gt;
+<span class="k">OLD FORM</span>          <span class="k">NEW FORM</span>             <span class="k">RULE (plain English)</span>
+:50: sender       &lt;Dbtr&gt;               copy the name across
+:32A: amount      &lt;Amt&gt;                remove the commas (1,250,000 → 1250000.00)
+:32A: currency    Ccy="..."            check it's a real currency code (EUR, USD…)
+:57A: rcvr bank   &lt;CdtrAgt&gt;            <span class="g">if blank: look up account → find bank code → fill in</span>
+:70: note         &lt;RmtInf&gt;             pull out the invoice number if there is one
       </div>
-      <figcaption>FIG 2 — The artifact itself. Plain, testable, auditable. Every developer and tester works from this single page.</figcaption>
+      <figcaption>FIG 4 — The deliverable. Every developer and tester works from this one page, so nobody guesses. <b>This table is what "writing mapping specifications" means.</b></figcaption>
     </figure>
-  </div>
-</section>
 
-<!-- WHY TREASURY CARES -->
-<section id="why" style="background:var(--cream-2);">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Concept 02 · the stakes</span>
-      <h2>Why Treasury &amp; Intraday Liquidity makes this high-stakes</h2>
-      <p class="lead kicker" style="margin-top:20px;">Intraday liquidity is knowing your true cash position <em>right now</em>, across every account and currency. One mismapped field and the number is wrong — and a wrong number is a regulatory breach.</p>
+    <div class="narrow reveal" style="padding-top:20px;">
+      <h3 style="margin-bottom:14px;">Why a bank cares so much about one blank box</h3>
+      <p>You might think: it's just one field. Why pay a senior person to fuss over it? Here's why — and it's the heart of <em>Treasury &amp; Intraday Liquidity</em>, the team in the job title.</p>
+      <p>A bank must know, <strong>at every moment of the day</strong>, exactly how much cash it has available. Not at the end of the day — <em>right now</em>, minute by minute. ("Intraday" simply means "within the day.") Regulators demand the bank never let that available cash dip below a safety line.</p>
+      <p>Every payment changes that running total. If even one payment is labelled wrong — sent to the wrong category because a field was mismapped — the bank's picture of its own cash becomes <strong>wrong</strong>. And a wrong picture can look like the bank crossed the safety line when it didn't (or hide that it really did). Both are serious.</p>
     </div>
 
-    <!-- FIGURE: intraday balance timeline -->
+    <!-- FIG D: liquidity chart -->
     <figure class="reveal">
       <div class="figframe">
         <svg viewBox="0 0 1040 380" xmlns="http://www.w3.org/2000/svg" font-family="JetBrains Mono, monospace">
-          <!-- axes -->
           <line x1="90" y1="300" x2="980" y2="300" stroke="#1A1A18" stroke-width="1.6"/>
           <line x1="90" y1="40" x2="90" y2="300" stroke="#1A1A18" stroke-width="1.6"/>
-          <text x="70" y="300" font-size="11" fill="#86846f" text-anchor="end">0</text>
+          <text x="70" y="304" font-size="11" fill="#86846f" text-anchor="end">€0</text>
           <text x="70" y="180" font-size="11" fill="#86846f" text-anchor="end">€50m</text>
-          <text x="70" y="60" font-size="11" fill="#86846f" text-anchor="end">€100m</text>
-          <text x="40" y="175" font-size="12" fill="#5B3E86" font-weight="600" transform="rotate(-90 40 175)">CASH POSITION</text>
-
-          <!-- danger zone -->
+          <text x="70" y="64" font-size="11" fill="#86846f" text-anchor="end">€100m</text>
+          <text x="42" y="200" font-size="12" fill="#5B3E86" font-weight="600" transform="rotate(-90 42 200)">CASH WE HAVE NOW</text>
           <rect x="90" y="270" width="890" height="30" fill="#F6D9C8" opacity="0.55"/>
-          <text x="975" y="288" font-size="10.5" fill="#b5562f" text-anchor="end">liquidity buffer floor — must never cross</text>
-
-          <!-- correct line (green) -->
+          <text x="975" y="288" font-size="10.5" fill="#b5562f" text-anchor="end">safety line — must never go below</text>
           <polyline points="90,150 230,120 370,200 510,90 650,230 790,140 980,110" fill="none" stroke="#2f6b40" stroke-width="2.6"/>
-          <!-- wrong line (orange dashed) -->
           <polyline points="90,150 230,120 370,200 510,170 650,285 790,250 980,210" fill="none" stroke="#C98A3a" stroke-width="2.4" stroke-dasharray="7 5"/>
-
-          <!-- divergence marker -->
           <circle cx="510" cy="90" r="5" fill="#2f6b40"/>
           <circle cx="510" cy="170" r="5" fill="#C98A3a"/>
           <line x1="510" y1="90" x2="510" y2="170" stroke="#86846f" stroke-width="1" stroke-dasharray="3 3"/>
           <text x="524" y="135" font-size="11" fill="#86846f">one payment</text>
-          <text x="524" y="150" font-size="11" fill="#86846f">misclassified</text>
-
-          <!-- breach marker -->
+          <text x="524" y="150" font-size="11" fill="#86846f">labelled wrong</text>
           <circle cx="650" cy="285" r="6" fill="#b5562f"/>
-          <text x="650" y="330" font-size="11.5" fill="#b5562f" text-anchor="middle" font-weight="600">apparent breach ✕</text>
-
-          <!-- legend -->
-          <rect x="120" y="40" width="320" height="58" rx="10" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1.2"/>
-          <line x1="138" y1="60" x2="170" y2="60" stroke="#2f6b40" stroke-width="2.6"/>
-          <text x="180" y="64" font-size="12" fill="#1A1A18">correctly mapped → true position</text>
-          <line x1="138" y1="82" x2="170" y2="82" stroke="#C98A3a" stroke-width="2.4" stroke-dasharray="7 5"/>
-          <text x="180" y="86" font-size="12" fill="#1A1A18">one bad field → false alarm</text>
-
-          <!-- time labels -->
-          <text x="90" y="320" font-size="10.5" fill="#86846f" text-anchor="middle">08:00</text>
-          <text x="370" y="320" font-size="10.5" fill="#86846f" text-anchor="middle">11:00</text>
-          <text x="650" y="320" font-size="10.5" fill="#86846f" text-anchor="middle">14:00</text>
-          <text x="980" y="320" font-size="10.5" fill="#86846f" text-anchor="middle">17:00</text>
+          <text x="650" y="332" font-size="11.5" fill="#b5562f" text-anchor="middle" font-weight="600">looks like a breach ✕</text>
+          <rect x="120" y="44" width="330" height="58" rx="10" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1.2"/>
+          <line x1="138" y1="64" x2="170" y2="64" stroke="#2f6b40" stroke-width="2.6"/>
+          <text x="180" y="68" font-size="12" fill="#1A1A18">mapped correctly → true picture</text>
+          <line x1="138" y1="86" x2="170" y2="86" stroke="#C98A3a" stroke-width="2.4" stroke-dasharray="7 5"/>
+          <text x="180" y="90" font-size="12" fill="#1A1A18">one wrong field → false alarm</text>
+          <text x="90" y="322" font-size="10.5" fill="#86846f" text-anchor="middle">08:00</text>
+          <text x="370" y="322" font-size="10.5" fill="#86846f" text-anchor="middle">11:00</text>
+          <text x="650" y="322" font-size="10.5" fill="#86846f" text-anchor="middle">14:00</text>
+          <text x="980" y="322" font-size="10.5" fill="#86846f" text-anchor="middle">17:00</text>
         </svg>
       </div>
-      <figcaption>FIG 3 — The same day, two truths. A single field mapped to the wrong liquidity bucket drags the reported position into the buffer floor (<b>BCBS 248</b> territory) — a breach that never actually happened. Good mapping <i>is</i> the control.</figcaption>
+      <figcaption>FIG 5 — The same day told two ways. The green line is the truth. The orange line is what the bank <i>sees</i> when one field was mapped wrong — and it dips below the safety line for no real reason. <b>Good mapping is what keeps the picture honest.</b></figcaption>
     </figure>
 
-    <div class="grid-3 reveal" style="margin-top:30px;">
-      <div class="card"><h3 style="font-size:23px;">Controls &amp; reconciliation</h3><p>The spec defines how two systems are reconciled and where a control fires. Bad mapping = silent breaks.</p></div>
-      <div class="card"><h3 style="font-size:23px;">Data lineage</h3><p>Trace any number on a liquidity report all the way back to the originating transaction. Regulators ask for exactly this.</p></div>
-      <div class="card"><h3 style="font-size:23px;">MI &amp; reporting</h3><p>Management information is only as trustworthy as the fields feeding it. The BA guarantees the inputs.</p></div>
+    <div class="narrow reveal">
+      <div class="recap"><b>Recap of the banking part:</b> A payment is a <b>form</b>. Moving from the old form to the new one is <b>message mapping</b> — the same idea as Maria's contact card. <b>Enrichment</b> means filling in a missing box by looking it up. And it all matters because one wrong box can make a bank's cash position look wrong — which regulators take very seriously.</div>
     </div>
   </div>
 </section>
 
-<!-- JIRA -->
+<!-- PART 5: JIRA -->
 <section id="jira">
   <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Tool 01 · the delivery engine</span>
-      <h2>What the role needs you for in JIRA</h2>
-      <p class="lead kicker" style="margin-top:20px;">JIRA is where the work is broken down, tracked and proven done. As the BA you turn requirements into well-formed <strong>stories with acceptance criteria</strong> — and trace every one to delivery.</p>
+    <div class="section-head narrow reveal" style="margin:0 auto;">
+      <span class="parttag">Part 5 of 7 · JIRA</span>
+      <h2>What is JIRA, and why is it needed?</h2>
+      <p class="lead" style="margin-top:20px;">We've written rules. But a real project has <em>thousands</em> of small jobs, and dozens of people doing them. How does anyone keep track? That's the problem JIRA solves.</p>
     </div>
 
-    <div class="grid-2 reveal" style="align-items:start;margin-top:34px;">
-      <!-- FIGURE: epic tree -->
-      <figure style="margin:0;">
-        <div class="figframe">
-          <svg viewBox="0 0 480 420" xmlns="http://www.w3.org/2000/svg" font-family="JetBrains Mono, monospace">
-            <!-- epic -->
-            <rect x="120" y="24" width="240" height="58" rx="12" fill="#E4D4F4" stroke="#1A1A18" stroke-width="1.6"/>
-            <text x="240" y="48" font-size="11" fill="#5B3E86" text-anchor="middle" font-weight="600">EPIC</text>
-            <text x="240" y="68" font-size="13" text-anchor="middle">MT → ISO migration</text>
-
-            <!-- lines -->
-            <path d="M240,82 L240,108 M120,128 L360,128" stroke="#1A1A18" stroke-width="1.4" fill="none"/>
-            <line x1="120" y1="108" x2="120" y2="150" stroke="#1A1A18" stroke-width="1.4"/>
-            <line x1="360" y1="108" x2="360" y2="150" stroke="#1A1A18" stroke-width="1.4"/>
-            <line x1="240" y1="108" x2="240" y2="150" stroke="#1A1A18" stroke-width="1.4"/>
-
-            <!-- stories -->
-            <g>
-              <rect x="44" y="150" width="152" height="64" rx="11" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1.4"/>
-              <text x="120" y="172" font-size="10" fill="#5B3E86" text-anchor="middle" font-weight="600">STORY</text>
-              <text x="120" y="190" font-size="10.5" text-anchor="middle">Map debtor</text>
-              <text x="120" y="204" font-size="10.5" text-anchor="middle">fields</text>
-
-              <rect x="164" y="150" width="152" height="64" rx="11" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1.4" transform="translate(0,0)" opacity="0"/>
-              <rect x="164" y="150" width="152" height="64" rx="11" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1.4" x2="0"/>
-              <text x="240" y="172" font-size="10" fill="#5B3E86" text-anchor="middle" font-weight="600">STORY</text>
-              <text x="240" y="190" font-size="10.5" text-anchor="middle">BIC</text>
-              <text x="240" y="204" font-size="10.5" text-anchor="middle">enrichment</text>
-
-              <rect x="284" y="150" width="152" height="64" rx="11" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1.4"/>
-              <text x="360" y="172" font-size="10" fill="#5B3E86" text-anchor="middle" font-weight="600">STORY</text>
-              <text x="360" y="190" font-size="10.5" text-anchor="middle">Reconcile</text>
-              <text x="360" y="204" font-size="10.5" text-anchor="middle">to ledger</text>
-            </g>
-
-            <!-- subtasks under middle -->
-            <line x1="240" y1="214" x2="240" y2="236" stroke="#1A1A18" stroke-width="1.4"/>
-            <line x1="180" y1="256" x2="300" y2="256" stroke="#1A1A18" stroke-width="1.4"/>
-            <line x1="180" y1="236" x2="180" y2="270" stroke="#1A1A18" stroke-width="1.4"/>
-            <line x1="300" y1="236" x2="300" y2="270" stroke="#1A1A18" stroke-width="1.4"/>
-            <rect x="120" y="270" width="120" height="46" rx="9" fill="#EAF6EC" stroke="#1A1A18" stroke-width="1.3"/>
-            <text x="180" y="289" font-size="9.5" fill="#2f6b40" text-anchor="middle" font-weight="600">SUB-TASK</text>
-            <text x="180" y="303" font-size="9.5" text-anchor="middle">build lookup</text>
-            <rect x="244" y="270" width="120" height="46" rx="9" fill="#EAF6EC" stroke="#1A1A18" stroke-width="1.3"/>
-            <text x="304" y="289" font-size="9.5" fill="#2f6b40" text-anchor="middle" font-weight="600">SUB-TASK</text>
-            <text x="304" y="303" font-size="9.5" text-anchor="middle">QA cases</text>
-
-            <text x="240" y="360" font-size="11" fill="#86846f" text-anchor="middle">Epic → Story → Sub-task</text>
-            <text x="240" y="378" font-size="11" fill="#86846f" text-anchor="middle">the BA owns the breakdown</text>
-          </svg>
-        </div>
-        <figcaption>FIG 4 — You slice a multi-year programme into deliverable, testable pieces.</figcaption>
-      </figure>
-
-      <!-- acceptance criteria card -->
-      <div class="card" style="margin-top:0;">
-        <div class="eyebrow" style="margin-bottom:14px;">A story you'd write</div>
-        <h3 style="margin-bottom:14px;">BIC enrichment</h3>
-        <p style="font-size:18px;color:#3a392f;margin-bottom:18px;"><em>As a</em> payments processor, <em>I want</em> a missing beneficiary BIC to be derived automatically, <em>so that</em> the ISO message validates without manual repair.</p>
-        <div class="spec" style="font-size:13px;box-shadow:none;">
-<span class="k">ACCEPTANCE CRITERIA</span>
-<span class="g">✓</span> GIVEN :57A: is blank
-  WHEN the IBAN resolves to one BIC
-  THEN &lt;CdtrAgt&gt;&lt;BIC&gt; is populated
-<span class="g">✓</span> GIVEN the IBAN resolves to none
-  THEN route to repair queue + MI alert
-<span class="g">✓</span> No payment is auto-released
-  on a guessed BIC
-        </div>
-        <div style="margin-top:18px;">
-          <span class="tag">links → FIG 2 spec</span>
-          <span class="tag">links → QA test set</span>
-          <span class="tag">links → Confluence BRD</span>
-        </div>
-      </div>
+    <div class="analogy narrow reveal" style="margin-left:auto;margin-right:auto;">
+      <div class="tagline"><span class="emoji">📋</span> Everyday picture · the sticky-note board</div>
+      <p>Picture a big whiteboard with three columns: <strong>To&nbsp;Do</strong>, <strong>Doing</strong>, <strong>Done</strong>. Every job is a sticky note. As work progresses, you drag a note from one column to the next. Anyone walking past can see, in two seconds, what's left and who's on what.</p>
+      <p><strong>JIRA is that board — but online, and shared by the whole team.</strong> Nothing more frightening than a very organised to-do list.</p>
     </div>
 
-    <div class="narrow reveal" style="padding-top:36px;">
-      <p>Day to day in JIRA you would: groom the backlog, write and prioritise stories, attach crisp acceptance criteria, link each story to its test cases and defects, and walk it across the board (To&nbsp;Do → In&nbsp;Progress → In&nbsp;Test → Done). If the programme is Agile/SAFe, you also run refinement and sprint planning.</p>
-      <p class="callout">"High-quality requirements and acceptance criteria" in the job ad <em>is</em> the skill of writing good JIRA stories. That phrase and JIRA are the same thing.</p>
-    </div>
-  </div>
-</section>
-
-<!-- CONFLUENCE -->
-<section id="confluence" style="background:var(--cream-2);">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Tool 02 · the knowledge home</span>
-      <h2>What the role needs you for in Confluence</h2>
-      <p class="lead kicker" style="margin-top:20px;">If JIRA is <em>what we're doing</em>, Confluence is <em>what it means</em>. It's where your specs, decisions and the traceability matrix live — the single source of truth a developer, tester or auditor opens to answer "what should this field do?"</p>
+    <div class="narrow reveal">
+      <p>Why is it <em>needed</em>? Because without it, jobs live in people's heads and in scattered emails. Things get forgotten. Two people accidentally do the same task. Nobody knows if the project is on track. JIRA gives everyone one shared, always-up-to-date picture.</p>
+      <p>Here's what that board looks like for our payment project:</p>
     </div>
 
-    <div class="grid-3 reveal" style="margin-top:34px;">
-      <div class="card lav"><h3 style="font-size:22px;">You author</h3><p>BRDs &amp; functional specs, the mapping spec itself, process &amp; operational design, data-flow diagrams.</p></div>
-      <div class="card lav"><h3 style="font-size:22px;">You maintain</h3><p>Decision logs, meeting notes, open-question registers, stakeholder sign-off pages — the project's memory.</p></div>
-      <div class="card lav"><h3 style="font-size:22px;">You prove</h3><p>The <strong>traceability matrix</strong>: every requirement → a story → a test → a delivered feature. Nothing dropped.</p></div>
-    </div>
-
-    <!-- FIGURE: traceability matrix -->
+    <!-- FIG E: kanban board -->
     <figure class="reveal">
       <div class="figframe">
-        <svg viewBox="0 0 1040 300" xmlns="http://www.w3.org/2000/svg" font-family="JetBrains Mono, monospace">
-          <text x="30" y="34" font-size="14" font-weight="600" fill="#5B3E86">TRACEABILITY MATRIX — the BA's proof of completeness</text>
-          <!-- header -->
-          <g font-size="12.5" fill="#1A1A18" font-weight="600">
-            <rect x="30" y="50" width="250" height="44" rx="8" fill="#E4D4F4" stroke="#1A1A18" stroke-width="1.3"/>
-            <text x="46" y="77">Requirement (Confluence)</text>
-            <rect x="288" y="50" width="220" height="44" rx="8" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1.3"/>
-            <text x="304" y="77">JIRA story</text>
-            <rect x="516" y="50" width="220" height="44" rx="8" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1.3"/>
-            <text x="532" y="77">Test case</text>
-            <rect x="744" y="50" width="266" height="44" rx="8" fill="#EAF6EC" stroke="#1A1A18" stroke-width="1.3"/>
-            <text x="760" y="77">Status</text>
-          </g>
-          <!-- rows -->
-          <g font-size="12" fill="#1A1A18">
-            <rect x="30" y="102" width="250" height="40" rx="7" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1"/>
-            <text x="46" y="127">REQ-01 debtor name maps</text>
-            <rect x="288" y="102" width="220" height="40" rx="7" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1"/>
-            <text x="304" y="127">PAY-114</text>
-            <rect x="516" y="102" width="220" height="40" rx="7" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1"/>
-            <text x="532" y="127">TC-220 ✓</text>
-            <rect x="744" y="102" width="266" height="40" rx="7" fill="#EAF6EC" stroke="#1A1A18" stroke-width="1"/>
-            <text x="760" y="127" fill="#2f6b40" font-weight="600">DONE</text>
+        <svg viewBox="0 0 1040 360" xmlns="http://www.w3.org/2000/svg" font-family="JetBrains Mono, monospace">
+          <!-- columns -->
+          <rect x="30" y="30" width="310" height="310" rx="14" fill="#F7F3DF" stroke="#1A1A18" stroke-width="1.4"/>
+          <rect x="365" y="30" width="310" height="310" rx="14" fill="#F3EAFB" stroke="#1A1A18" stroke-width="1.4"/>
+          <rect x="700" y="30" width="310" height="310" rx="14" fill="#EAF6EC" stroke="#1A1A18" stroke-width="1.4"/>
+          <text x="185" y="60" font-size="14" font-weight="600" fill="#86846f" text-anchor="middle">TO DO</text>
+          <text x="520" y="60" font-size="14" font-weight="600" fill="#5B3E86" text-anchor="middle">DOING</text>
+          <text x="855" y="60" font-size="14" font-weight="600" fill="#2f6b40" text-anchor="middle">DONE</text>
 
-            <rect x="30" y="148" width="250" height="40" rx="7" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1"/>
-            <text x="46" y="173">REQ-02 BIC enrichment</text>
-            <rect x="288" y="148" width="220" height="40" rx="7" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1"/>
-            <text x="304" y="173">PAY-118</text>
-            <rect x="516" y="148" width="220" height="40" rx="7" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1"/>
-            <text x="532" y="173">TC-231 ✓</text>
-            <rect x="744" y="148" width="266" height="40" rx="7" fill="#EAF6EC" stroke="#1A1A18" stroke-width="1"/>
-            <text x="760" y="173" fill="#2f6b40" font-weight="600">IN TEST</text>
+          <!-- to do cards -->
+          <rect x="52" y="82" width="266" height="62" rx="9" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1.2"/>
+          <text x="68" y="106" font-size="12.5">Reconcile to the ledger</text>
+          <text x="68" y="126" font-size="10.5" fill="#86846f">assigned: Priya</text>
+          <rect x="52" y="156" width="266" height="62" rx="9" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1.2"/>
+          <text x="68" y="180" font-size="12.5">Map the date field</text>
+          <text x="68" y="200" font-size="10.5" fill="#86846f">assigned: —</text>
 
-            <rect x="30" y="194" width="250" height="40" rx="7" fill="#FBEEE4" stroke="#C98A3a" stroke-width="1.3"/>
-            <text x="46" y="219">REQ-03 reconcile to ledger</text>
-            <rect x="288" y="194" width="220" height="40" rx="7" fill="#FBEEE4" stroke="#C98A3a" stroke-width="1.3"/>
-            <text x="304" y="219" fill="#b5562f">— none —</text>
-            <rect x="516" y="194" width="220" height="40" rx="7" fill="#FBEEE4" stroke="#C98A3a" stroke-width="1.3"/>
-            <text x="532" y="219" fill="#b5562f">— none —</text>
-            <rect x="744" y="194" width="266" height="40" rx="7" fill="#FBEEE4" stroke="#C98A3a" stroke-width="1.3"/>
-            <text x="760" y="219" fill="#b5562f" font-weight="600">GAP ✕ caught here</text>
-          </g>
-          <text x="30" y="268" font-size="11.5" fill="#86846f">The matrix is how a requirement that quietly fell through the cracks (REQ-03) gets spotted before go-live.</text>
+          <!-- doing card (highlighted) -->
+          <rect x="387" y="82" width="266" height="86" rx="9" fill="#fff" stroke="#5B3E86" stroke-width="2"/>
+          <text x="403" y="106" font-size="12.5" font-weight="600">Fill in missing bank code</text>
+          <text x="403" y="126" font-size="10.5" fill="#86846f">(the enrichment job)</text>
+          <text x="403" y="148" font-size="10.5" fill="#5B3E86">assigned: Sam · in progress</text>
+
+          <!-- done cards -->
+          <rect x="722" y="82" width="266" height="62" rx="9" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1.2"/>
+          <text x="738" y="106" font-size="12.5">Map the sender name ✓</text>
+          <text x="738" y="126" font-size="10.5" fill="#2f6b40">tested &amp; signed off</text>
+          <rect x="722" y="156" width="266" height="62" rx="9" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1.2"/>
+          <text x="738" y="180" font-size="12.5">Map the amount ✓</text>
+          <text x="738" y="200" font-size="10.5" fill="#2f6b40">tested &amp; signed off</text>
+
+          <text x="520" y="312" font-size="11.5" fill="#86846f" text-anchor="middle">Each sticky note is a "ticket". The Business Analyst writes the tickets.</text>
         </svg>
       </div>
-      <figcaption>FIG 5 — JIRA and Confluence join here. The matrix links the <b>Confluence</b> requirement to its <b>JIRA</b> story and test — and surfaces anything unbuilt.</figcaption>
+      <figcaption>FIG 6 — JIRA is the shared board. A job moves left → right as it gets done. Anyone can see the whole project at a glance.</figcaption>
     </figure>
+
+    <div class="narrow reveal" style="padding-top:24px;">
+      <h3 style="margin-bottom:14px;">What the BA actually does in JIRA</h3>
+      <p>As the Business Analyst, <strong>you write the sticky notes</strong> (called "tickets" or "stories"). And a good ticket doesn't just say "fill in the bank code." It also says <em>exactly what "done" means</em>, so the developer and tester can't disagree later. That definition-of-done is called the <strong>acceptance criteria</strong>.</p>
+      <p>Here's a ticket you would write. Read the bottom part slowly — it's just a clear checklist of "this must be true before we call it finished":</p>
+    </div>
+
+    <figure class="reveal">
+      <div class="spec">
+<span class="k">TICKET:</span> Fill in a missing receiver bank code automatically
+
+<span class="c"># In plain words: when the bank code is blank, the system</span>
+<span class="c"># should look it up itself, instead of a human doing it by hand.</span>
+
+<span class="k">DONE MEANS (acceptance criteria):</span>
+<span class="g">✓</span> If the bank code is blank AND the account points to exactly one bank
+   → the system fills it in by itself.
+<span class="g">✓</span> If the account doesn't clearly point to one bank
+   → don't guess. Set it aside for a human and raise a flag.
+<span class="g">✓</span> Never send a payment using a guessed bank code.
+      </div>
+      <figcaption>FIG 7 — A JIRA ticket with its "done means…" checklist. The job ad's phrase <b>"high-quality requirements and acceptance criteria"</b> simply means: write tickets this clearly.</figcaption>
+    </figure>
+
+    <div class="narrow reveal">
+      <div class="recap"><b>Recap:</b> <b>JIRA</b> = a shared online board of every job in the project, moving from To&nbsp;Do → Doing → Done. The BA <b>writes the tickets</b> and spells out what "done" means (the <b>acceptance criteria</b>) so nobody is left guessing.</div>
+    </div>
   </div>
 </section>
 
-<!-- THE BRIDGE -->
-<section id="bridge">
+<!-- PART 6: CONFLUENCE -->
+<section id="confluence" style="background:var(--cream-2);">
+  <div class="wrap">
+    <div class="section-head narrow reveal" style="margin:0 auto;">
+      <span class="parttag">Part 6 of 7 · Confluence</span>
+      <h2>What is Confluence, and why is it needed?</h2>
+      <p class="lead" style="margin-top:20px;">A JIRA ticket is short — a sticky note. But the <em>full explanation</em> behind it can be pages long. Where does that live? In Confluence.</p>
+    </div>
+
+    <div class="analogy narrow reveal" style="margin-left:auto;margin-right:auto;">
+      <div class="tagline"><span class="emoji">📓</span> Everyday picture · the team's shared notebook</div>
+      <p>Think of a giant shared notebook — or a private Wikipedia that only your team can read and edit. Every page explains one thing in full: how a process works, why a decision was made, the complete rulebook for the payment mapping.</p>
+      <p><strong>Confluence is that notebook.</strong> If JIRA is the <em>short to-do note</em>, Confluence is the <em>full instructions</em> the note points to.</p>
+    </div>
+
+    <div class="narrow reveal">
+      <p>Why is it needed? Because knowledge that lives only in someone's head leaves when they do. And a sticky note saying "fill in the bank code" isn't enough for a developer who needs the <em>exact</em> rule. So the ticket links to a Confluence page that holds the full story — including the mapping table from FIG 4.</p>
+      <p>As the Business Analyst, the pages you write and look after include:</p>
+    </div>
+
+    <div class="grid-3 reveal" style="margin-top:8px;">
+      <div class="card lav"><h3 style="font-size:21px;">The full rulebooks</h3><p>The complete mapping specifications, written so a developer never has to guess what a field should do.</p></div>
+      <div class="card lav"><h3 style="font-size:21px;">The decisions &amp; notes</h3><p>Why the team chose to do it this way, meeting notes, open questions — the project's memory, in one place.</p></div>
+      <div class="card lav"><h3 style="font-size:21px;">The "did we miss anything?" list</h3><p>A checklist (called a traceability matrix) that proves every rule we promised has actually been built and tested.</p></div>
+    </div>
+
+    <div class="narrow reveal" style="padding-top:30px;">
+      <p>That last one is worth seeing, because it's where JIRA and Confluence shake hands. It's just a table that lines up three things: <em>what we promised</em>, <em>the ticket that builds it</em>, and <em>the test that proves it</em> — so a job can't quietly fall through the cracks.</p>
+    </div>
+
+    <!-- FIG F: traceability matrix -->
+    <figure class="reveal">
+      <div class="figframe">
+        <svg viewBox="0 0 1040 290" xmlns="http://www.w3.org/2000/svg" font-family="JetBrains Mono, monospace">
+          <text x="30" y="30" font-size="14" font-weight="600" fill="#5B3E86">THE "DID WE MISS ANYTHING?" CHECKLIST</text>
+          <g font-size="12.5" fill="#1A1A18" font-weight="600">
+            <rect x="30" y="46" width="290" height="42" rx="8" fill="#E4D4F4" stroke="#1A1A18" stroke-width="1.3"/>
+            <text x="46" y="72">What we promised</text>
+            <rect x="328" y="46" width="210" height="42" rx="8" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1.3"/>
+            <text x="344" y="72">JIRA ticket</text>
+            <rect x="546" y="46" width="210" height="42" rx="8" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1.3"/>
+            <text x="562" y="72">Tested?</text>
+            <rect x="764" y="46" width="246" height="42" rx="8" fill="#EAF6EC" stroke="#1A1A18" stroke-width="1.3"/>
+            <text x="780" y="72">Status</text>
+          </g>
+          <g font-size="12" fill="#1A1A18">
+            <rect x="30" y="96" width="290" height="38" rx="7" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1"/>
+            <text x="46" y="120">Map the sender name</text>
+            <rect x="328" y="96" width="210" height="38" rx="7" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1"/>
+            <text x="344" y="120">PAY-114</text>
+            <rect x="546" y="96" width="210" height="38" rx="7" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1"/>
+            <text x="562" y="120">yes ✓</text>
+            <rect x="764" y="96" width="246" height="38" rx="7" fill="#EAF6EC" stroke="#1A1A18" stroke-width="1"/>
+            <text x="780" y="120" fill="#2f6b40" font-weight="600">DONE</text>
+
+            <rect x="30" y="140" width="290" height="38" rx="7" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1"/>
+            <text x="46" y="164">Fill in the bank code</text>
+            <rect x="328" y="140" width="210" height="38" rx="7" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1"/>
+            <text x="344" y="164">PAY-118</text>
+            <rect x="546" y="140" width="210" height="38" rx="7" fill="#FFFDF3" stroke="#1A1A18" stroke-width="1"/>
+            <text x="562" y="164">testing…</text>
+            <rect x="764" y="140" width="246" height="38" rx="7" fill="#EAF6EC" stroke="#1A1A18" stroke-width="1"/>
+            <text x="780" y="164" fill="#2f6b40" font-weight="600">IN PROGRESS</text>
+
+            <rect x="30" y="184" width="290" height="38" rx="7" fill="#FBEEE4" stroke="#C98A3a" stroke-width="1.3"/>
+            <text x="46" y="208">Reconcile to the ledger</text>
+            <rect x="328" y="184" width="210" height="38" rx="7" fill="#FBEEE4" stroke="#C98A3a" stroke-width="1.3"/>
+            <text x="344" y="208" fill="#b5562f">no ticket!</text>
+            <rect x="546" y="184" width="210" height="38" rx="7" fill="#FBEEE4" stroke="#C98A3a" stroke-width="1.3"/>
+            <text x="562" y="208" fill="#b5562f">—</text>
+            <rect x="764" y="184" width="246" height="38" rx="7" fill="#FBEEE4" stroke="#C98A3a" stroke-width="1.3"/>
+            <text x="780" y="208" fill="#b5562f" font-weight="600">GAP — caught! ✕</text>
+          </g>
+          <text x="30" y="256" font-size="11.5" fill="#86846f">The bottom row was promised but nobody built it. The checklist catches it before it ships.</text>
+        </svg>
+      </div>
+      <figcaption>FIG 8 — Where the two tools meet: each promise (a <b>Confluence</b> page) links to its <b>JIRA</b> ticket and its test. The third row shows the whole point — a forgotten job, caught in time.</figcaption>
+    </figure>
+
+    <div class="narrow reveal">
+      <div class="recap"><b>Recap:</b> <b>Confluence</b> = the team's shared notebook, where the full rulebooks and decisions live. JIRA tickets are short and link <em>out</em> to the matching Confluence page for the detail.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PART 7: HOW THEY FIT -->
+<section id="together">
   <div class="narrow reveal">
-    <span class="eyebrow" style="display:block;margin-bottom:18px;">How the three fit together</span>
-    <h2 style="margin-bottom:24px;">One loop, three tools</h2>
-    <p class="lead">The <strong>mapping spec</strong> says what's true. The <strong>JIRA story</strong> gets it built. The <strong>Confluence page</strong> explains and proves it. A developer never has to guess — the story links to the spec; the matrix links it all back.</p>
+    <span class="parttag">Part 7 of 7 · Putting it together</span>
+    <h2>The whole job in one picture</h2>
+    <p class="lead" style="margin-top:20px;">You've met every piece. Here's how they form a single loop — and this loop, owned end to end, <em>is</em> the role.</p>
   </div>
   <div class="wrap">
     <figure class="reveal">
       <div class="figframe">
         <svg viewBox="0 0 1040 250" xmlns="http://www.w3.org/2000/svg" font-family="JetBrains Mono, monospace">
-          <defs>
-            <marker id="a2" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto"><path d="M1,1 L10,5 L1,9" fill="none" stroke="#5B3E86" stroke-width="2"/></marker>
-          </defs>
-          <!-- three nodes -->
-          <rect x="40" y="80" width="260" height="90" rx="16" fill="#F3EAFB" stroke="#1A1A18" stroke-width="1.6"/>
-          <text x="170" y="115" font-size="15" font-weight="600" fill="#5B3E86" text-anchor="middle">CONFLUENCE</text>
-          <text x="170" y="140" font-size="12.5" text-anchor="middle" fill="#1A1A18">the mapping spec</text>
-          <text x="170" y="157" font-size="11" text-anchor="middle" fill="#86846f">"what is true"</text>
-
-          <rect x="390" y="80" width="260" height="90" rx="16" fill="#EAF6EC" stroke="#1A1A18" stroke-width="1.6"/>
-          <text x="520" y="115" font-size="15" font-weight="600" fill="#2f6b40" text-anchor="middle">JIRA</text>
-          <text x="520" y="140" font-size="12.5" text-anchor="middle" fill="#1A1A18">story + acceptance</text>
-          <text x="520" y="157" font-size="11" text-anchor="middle" fill="#86846f">"get it built"</text>
-
-          <rect x="740" y="80" width="260" height="90" rx="16" fill="#FBEEE4" stroke="#1A1A18" stroke-width="1.6"/>
-          <text x="870" y="115" font-size="15" font-weight="600" fill="#C98A3a" text-anchor="middle">RECONCILE &amp; MI</text>
-          <text x="870" y="140" font-size="12.5" text-anchor="middle" fill="#1A1A18">working liquidity view</text>
-          <text x="870" y="157" font-size="11" text-anchor="middle" fill="#86846f">"prove it's right"</text>
-
-          <line x1="300" y1="125" x2="388" y2="125" stroke="#5B3E86" stroke-width="2" marker-end="url(#a2)"/>
-          <line x1="650" y1="125" x2="738" y2="125" stroke="#5B3E86" stroke-width="2" marker-end="url(#a2)"/>
-          <!-- loop back -->
-          <path d="M870,170 C870,225 170,225 170,172" fill="none" stroke="#5B3E86" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#a2)"/>
-          <text x="520" y="240" font-size="11.5" fill="#86846f" text-anchor="middle">findings &amp; gaps feed the next requirement — the traceability loop closes</text>
+          <defs><marker id="a2" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto"><path d="M1,1 L10,5 L1,9" fill="none" stroke="#5B3E86" stroke-width="2"/></marker></defs>
+          <rect x="40" y="80" width="260" height="92" rx="16" fill="#F3EAFB" stroke="#1A1A18" stroke-width="1.6"/>
+          <text x="170" y="112" font-size="15" font-weight="600" fill="#5B3E86" text-anchor="middle">CONFLUENCE</text>
+          <text x="170" y="136" font-size="12.5" text-anchor="middle">write the rulebook</text>
+          <text x="170" y="156" font-size="11" text-anchor="middle" fill="#86846f">"what should happen"</text>
+          <rect x="390" y="80" width="260" height="92" rx="16" fill="#EAF6EC" stroke="#1A1A18" stroke-width="1.6"/>
+          <text x="520" y="112" font-size="15" font-weight="600" fill="#2f6b40" text-anchor="middle">JIRA</text>
+          <text x="520" y="136" font-size="12.5" text-anchor="middle">turn it into tickets</text>
+          <text x="520" y="156" font-size="11" text-anchor="middle" fill="#86846f">"get it built &amp; tested"</text>
+          <rect x="740" y="80" width="260" height="92" rx="16" fill="#FBEEE4" stroke="#1A1A18" stroke-width="1.6"/>
+          <text x="870" y="112" font-size="15" font-weight="600" fill="#C98A3a" text-anchor="middle">CHECK &amp; REPORT</text>
+          <text x="870" y="136" font-size="12.5" text-anchor="middle">is the cash picture right?</text>
+          <text x="870" y="156" font-size="11" text-anchor="middle" fill="#86846f">"prove it works"</text>
+          <line x1="300" y1="126" x2="388" y2="126" stroke="#5B3E86" stroke-width="2" marker-end="url(#a2)"/>
+          <line x1="650" y1="126" x2="738" y2="126" stroke="#5B3E86" stroke-width="2" marker-end="url(#a2)"/>
+          <path d="M870,172 C870,228 170,228 170,174" fill="none" stroke="#5B3E86" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#a2)"/>
+          <text x="520" y="243" font-size="11.5" fill="#86846f" text-anchor="middle">…and anything still wrong becomes the next rule to write — the loop goes round again.</text>
         </svg>
       </div>
-      <figcaption>FIG 6 — The BA owns the whole loop. That ownership is what a <b>VP</b>-level salary buys.</figcaption>
+      <figcaption>FIG 9 — Write the rule (Confluence) → build it (JIRA) → prove it's right (check &amp; report) → repeat. The Business Analyst owns this whole circle.</figcaption>
     </figure>
+  </div>
+  <div class="narrow reveal" style="padding-top:18px;">
+    <p class="callout">If someone asks you, in an interview, "what does a Business Analyst do here?" — point at this circle. <em>I write down exactly how data should move and what 'correct' means; I break that into clear, testable jobs; and I prove nothing was lost.</em></p>
   </div>
 </section>
 
 <!-- PREP -->
 <section id="prep" style="background:var(--cream-2);">
   <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">How to prepare</span>
-      <h2>A focused plan to be ready</h2>
-      <p class="lead kicker" style="margin-top:20px;">Two tracks: learn the <em>domain language</em> so you sound credible in five minutes, and build <em>artifacts</em> so you can show the skill, not just claim it.</p>
+    <div class="section-head narrow reveal" style="margin:0 auto;">
+      <span class="parttag">Bonus · How to get ready</span>
+      <h2>A simple plan to prepare</h2>
+      <p class="lead" style="margin-top:20px;">Two things: learn enough of the <em>words</em> to sound at home, and make a couple of <em>example pages</em> so you can show the skill, not just talk about it.</p>
     </div>
 
-    <div class="prep reveal" style="margin-top:34px;">
-      <div class="prep-row"><span class="n">1</span><div><h3>Learn the ISO 20022 migration story</h3><p>The live theme in payments. Know why banks are moving MT → MX, and what pacs.008 / camt.053 are for. This is the ad's "legacy-to-strategic migration" hint, spelled out.</p></div></div>
-      <div class="prep-row"><span class="n">2</span><div><h3>Get the SWIFT MT basics</h3><p>MT103, MT202/202COV, MT940/950 — just their purpose and a few key fields (:50, :59, :32A). Enough to read a message and talk about it.</p></div></div>
-      <div class="prep-row"><span class="n">3</span><div><h3>Understand intraday liquidity &amp; BCBS 248</h3><p>What a cash position is, nostro/vostro accounts, why timing matters, and the monitoring tools a regulator expects. This is the "why it's high-stakes" you saw in FIG 3.</p></div></div>
-      <div class="prep-row"><span class="n">4</span><div><h3>Be fluent in JIRA &amp; Confluence</h3><p>Epic/Story/Sub-task hierarchy, writing acceptance criteria, linking issues, the traceability matrix. A free Atlassian trial + an afternoon of clicking is enough to speak from experience.</p></div></div>
-      <div class="prep-row"><span class="n">5</span><div><h3>Build three artifacts</h3><p>A real mapping spec (like FIG 2), a traceability matrix (FIG 5), and a one-page BRD. Three pages that prove the core skill — bring them to the interview.</p></div></div>
-      <div class="prep-row"><span class="n">6</span><div><h3>Reframe your adjacent experience</h3><p>Any work where you specified how one system's data becomes another's <em>is</em> message/data mapping. Dress it in this vocabulary and lead with it.</p></div></div>
+    <div class="prep reveal" style="margin-top:30px;">
+      <div class="prep-row"><span class="n">1</span><div><h3>Learn the "old form → new form" story</h3><p>Read a short intro to the switch from SWIFT MT to ISO 20022. You don't need every detail — just be able to say <em>why</em> banks are moving and what the two forms are. This is the single hottest topic in payments right now.</p></div></div>
+      <div class="prep-row"><span class="n">2</span><div><h3>Skim the old payment form</h3><p>Look at what an MT103 contains (sender, receiver, amount). Half an hour is enough to read one and not be intimidated.</p></div></div>
+      <div class="prep-row"><span class="n">3</span><div><h3>Understand "cash position" &amp; the safety line</h3><p>Just the idea from FIG 5: a bank must know its available cash all day, and must stay above a regulator's line. The rule behind that line is called BCBS 248 — knowing the name is a nice touch.</p></div></div>
+      <div class="prep-row"><span class="n">4</span><div><h3>Click around JIRA &amp; Confluence once</h3><p>Sign up for a free Atlassian trial. Make a board, write one ticket with acceptance criteria, write one Confluence page. Now you can speak from experience, not theory.</p></div></div>
+      <div class="prep-row"><span class="n">5</span><div><h3>Make two example pages to bring</h3><p>A small mapping table (like FIG 4) and a small "did-we-miss-anything" checklist (like FIG 8). Two pages that quietly prove you can do the core of the job.</p></div></div>
+      <div class="prep-row"><span class="n">6</span><div><h3>Tell your own version of this story</h3><p>Have you ever specified how one system's data becomes another's — in any job? That <em>is</em> this skill. Describe it using the words from this page, and lead with it.</p></div></div>
     </div>
   </div>
 </section>
@@ -671,20 +796,19 @@
 <!-- FOOTER -->
 <footer>
   <div class="wrap">
-    <p class="display-sm">Don't just move data. <br><span class="dim">Make it understood.</span></p>
-    <p style="max-width:48ch;margin-top:26px;">That single idea — translate faithfully, prove nothing was lost — is the whole job. Mapping specs, JIRA and Confluence are simply how a Business Analyst does it at the scale and audit standard a bank requires.</p>
-    <div style="margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;">
-      <a href="#mapping" class="pill">Back to the top ↑</a>
+    <p class="display-sm">It was never really hard. <br><span class="dim">It was just unfamiliar words.</span></p>
+    <p style="max-width:50ch;margin-top:24px;">Mapping is "this box becomes that box." An API is a doorway two systems talk through. JIRA is a shared to-do board. Confluence is the team's notebook. Put them together and you can explain the whole role — calmly, from scratch.</p>
+    <div style="margin-top:28px;display:flex;gap:14px;flex-wrap:wrap;">
+      <a href="#problem" class="pill">Read it again from the top ↑</a>
     </div>
-    <p class="foot-meta">An explainer for the VP · BA Treasury &amp; Intraday Liquidity role · styled after wisprflow.ai · figures hand-drawn in SVG</p>
+    <p class="foot-meta">A from-scratch explainer for the VP · BA Treasury &amp; Intraday Liquidity role · styled after wisprflow.ai · figures hand-drawn in SVG</p>
   </div>
 </footer>
 
 <script>
-  // scroll reveal
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
-  },{threshold:0.12});
+  },{threshold:0.1});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
 </body>
